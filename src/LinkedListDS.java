@@ -1,6 +1,6 @@
-class Node{
-    private int data;
-    private Node next;
+class Node {
+    public int data;
+    public Node next;
 
     //Node Constructor for Creating New Node
     Node(int data) {
@@ -15,20 +15,41 @@ class LinkedList {
     //Insert Data in New Node
     public void insertFirst(int data) {
         Node newNode = new Node(data);
+        //Adding Data in Node
+        if(head == null) {
+            head = newNode;
+            tail = newNode;
+        } else {
+            newNode.next = head;
+            head = newNode;
+        }
+    }
+
+    //Display Node in Linked List
+    public void showLinkedList() {
+        if(head == null) {
+            System.out.println("Linked List is Empty.");
+        } else {
+            Node temp = head;
+            while (temp != null) {
+                System.out.print(temp.data + " -> ");
+                temp = temp.next;
+            }
+        }
     }
 }
 
 public class LinkedListDS {
     public static void main(String[] args) {
 
-        System.out.println("Welcome to LinkedList Data Structures Problems.");
+        System.out.println("Welcome to LinkedList Data Structures Problem.");
 
         LinkedList linkedList = new LinkedList();
 
-        linkedList.insertFirst(56);
-        linkedList.insertFirst(30);
         linkedList.insertFirst(70);
+        linkedList.insertFirst(30);
+        linkedList.insertFirst(56);
 
-
+        linkedList.showLinkedList();
     }
 }
