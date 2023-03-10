@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="1420b1a9-4ccd-4388-bdbb-bcf54fe8bf60" name="Changes" comment="Added : Ability to create Linked List by appending 30 and 70 to 56" />
+    <list default="true" id="1420b1a9-4ccd-4388-bdbb-bcf54fe8bf60" name="Changes" comment="Added : Ability to delete the first element in the LinkedList of sequence 56-&gt;30-&gt;70" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
