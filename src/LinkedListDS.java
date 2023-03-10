@@ -10,9 +10,10 @@ class Node {
         this.next = null;
     }
 }
-
 class LinkedList {
+
     int location = 0;
+
     Node head;
     Node tail;
     //Insert Data in New Node
@@ -97,6 +98,27 @@ class LinkedList {
             }
         }
     }
+
+    public void insertAtLocation(int data,int nthdata) {
+        Node newNode = new Node(data);
+        if(head == null) {
+            head = newNode;
+            tail = newNode;
+        } else {
+            Node temp = head;
+            Node nextNode;
+            while (temp != null) {
+                nextNode = temp.next;
+                if(temp.data == nthdata) {
+                    temp.next = newNode;
+                    newNode.next = nextNode;
+                }
+//                System.out.print(temp.data + " -> ");
+                temp = temp.next;
+            }
+        }
+    }
+
     //Display Node in Linked List
     public void showLinkedList() {
         if(head == null) {
@@ -131,7 +153,8 @@ public class LinkedListDS {
             System.out.println("5. DELETE FIRST ELEMENT ");
             System.out.println("6. DELETE LAST ELEMENT ");
             System.out.println("7. SEARCH ELEMENT ");
-            System.out.println("8. EXIT ");
+            System.out.println("8. INSERT AFTER NODE");
+            System.out.println("9. EXIT ");
             System.out.println("Enter the Choice for Operation : ");
             choice = sc.nextInt();
 
@@ -170,7 +193,13 @@ public class LinkedListDS {
                     System.out.println("Enter the Data to Search within Linked List : ");
                     linkedList.searchNode(sc.nextInt());
                     break;
+                case 8:
+                    System.out.println("Enter the Data After which to Insert New Data : ");
+                    int nthData2 = sc.nextInt();
+                    System.out.println("Enter the Data : ");
+                    linkedList.insertAtLocation(sc.nextInt(),nthData2);
+                    break;
             }
-        }while(choice != 8);
+        }while(choice != 9);
     }
 }
