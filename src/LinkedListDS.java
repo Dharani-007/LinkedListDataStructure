@@ -1,4 +1,5 @@
 import java.util.Scanner;
+
 class Node {
     public int data;
     public Node next;
@@ -14,12 +15,11 @@ class LinkedList {
     int location = 0;
     Node head;
     Node tail;
-
     //Insert Data in New Node
     public void insertFirst(int data) {
         Node newNode = new Node(data);
         //Adding Data in Node
-        if (head == null) {
+        if(head == null) {
             head = newNode;
             tail = newNode;
         } else {
@@ -27,13 +27,13 @@ class LinkedList {
             head = newNode;
         }
         location++;
-        System.out.println("Location:" + location);
+        System.out.println("Location:"+location);
     }
 
     //Insert Data from Last
     public void insertLast(int data) {
         Node newNode = new Node(data);
-        if (tail == null) {
+        if(tail == null) {
             head = newNode;
             tail = newNode;
         } else {
@@ -41,13 +41,13 @@ class LinkedList {
             tail = newNode;
         }
         location++;
-        System.out.println("Location:" + location);
+        System.out.println("Location:"+location);
     }
 
     //Insert New Node after Given Node
-    public void insertNthPosition(int data, int nthdata) {
+    public void insertNthPosition(int data,int nthdata) {
         Node newNode = new Node(data);
-        if (head == null) {
+        if(head == null) {
             head = newNode;
             tail = newNode;
         } else {
@@ -55,18 +55,17 @@ class LinkedList {
             Node nextNode;
             while (temp != null) {
                 nextNode = temp.next;
-                if (temp.data == nthdata) {
+                if(temp.data == nthdata) {
                     temp.next = newNode;
                     newNode.next = nextNode;
                 }
-
+//                System.out.print(temp.data + " -> ");
                 temp = temp.next;
             }
         }
     }
-
     public void pop() {
-        if (head == null) {
+        if(head == null) {
             System.out.println("Linked List is Empty.");
         } else {
             head = head.next;
@@ -74,19 +73,33 @@ class LinkedList {
     }
 
     public void popLast() {
-        if (head == null) {
+        if(head == null) {
             System.out.println("Linked List is Empty.");
         } else {
             Node second_Last = head;
-            while (second_Last.next.next != null)
+            while(second_Last.next.next != null)
                 second_Last = second_Last.next;
             second_Last.next = null;
         }
     }
-
+    public void searchNode(int data) {
+        if(head == null) {
+            System.out.println("Linked List is Empty.");
+        } else {
+            int foundLocation = 1;
+            Node temp = head;
+            while(temp != null) {
+                if(temp.data == data) {
+                    System.out.println("Node found at Location : "+foundLocation);
+                }
+                foundLocation++;
+                temp = temp.next;
+            }
+        }
+    }
     //Display Node in Linked List
     public void showLinkedList() {
-        if (head == null) {
+        if(head == null) {
             System.out.println("Linked List is Empty.");
         } else {
             Node temp = head;
@@ -117,7 +130,8 @@ public class LinkedListDS {
             System.out.println("4. INSERT AT Nth POSITION ");
             System.out.println("5. DELETE FIRST ELEMENT ");
             System.out.println("6. DELETE LAST ELEMENT ");
-            System.out.println("7. EXIT ");
+            System.out.println("7. SEARCH ELEMENT ");
+            System.out.println("8. EXIT ");
             System.out.println("Enter the Choice for Operation : ");
             choice = sc.nextInt();
 
@@ -140,7 +154,7 @@ public class LinkedListDS {
                     int nthData = sc.nextInt();
                     System.out.println("Enter the Data : ");
                     int data = sc.nextInt();
-                    linkedList.insertNthPosition(data, nthData);
+                    linkedList.insertNthPosition(data,nthData);
                     break;
                 case 5:
                     linkedList.pop();
@@ -152,7 +166,11 @@ public class LinkedListDS {
                     System.out.println("After Last Node Delete");
                     linkedList.showLinkedList();
                     break;
+                case 7:
+                    System.out.println("Enter the Data to Search within Linked List : ");
+                    linkedList.searchNode(sc.nextInt());
+                    break;
             }
-        } while (choice != 7);
+        }while(choice != 8);
     }
 }
